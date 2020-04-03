@@ -5,13 +5,13 @@ A clone of an iOS version of Yahtzee
 # TODO
 
 - [later] Define a second CSS file that contains small height screen values
+- [x] Populate `play-area` with placeholder content
+- [x] Develop a representative VueJS state object
+- [x] Connect Roll button to the dice display
+- [x] Populate p2s data in view
 
-- [ ] Populate `play-area` with placeholder content
+- [ ] Allow selection of cell during turn
 
-- [ ] Develop a representative VueJS state object
-- [ ] Connect Roll button to the dice display
-- [ ] Implement 3 rolls per player
-    - [ ] Implement turn switching
-    - [ ] Implement two simple calculated score values (full-house, and number of ones)
-    - [ ] Allow player to select score cell during their turn
-    - [ ] Connect play button
+- [ ] Disable play button until temp-selection
+- [ ] Disable roll button after 3 rolls
+- [ ] Ability to freeze dice

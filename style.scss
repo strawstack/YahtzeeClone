@@ -80,8 +80,31 @@ html, body {
         @include center;
     }
     .player-name-area {
+        position: relative;
         font-size: $medium;
         @include center;
+
+        .player-name-highlight {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            background: $point-highlight-color;
+            opacity: 0;
+            margin: 2px;
+            border-radius: 4px;
+            transition: opacity 0.2s;
+
+            &.active {
+                background: $point-highlight-color;
+                opacity: 0.5;
+            }
+        }
+
+        .name {
+            position: relative;
+        }
     }
 }
 
@@ -116,10 +139,29 @@ html, body {
             @include center;
             position: relative;
             z-index: 1;
+            user-select: none;
 
             &.hide {
                 opacity: 0;
+                pointer-events: none;
+                cursor: default;
             }
+
+            &.active:hover {
+                cursor: pointer;
+                border: 2px solid yellow;
+                border-radius: 4px;
+                margin: 4px;
+            }
+
+            &.select, &.used {
+                color: green;
+            }
+        }
+        .point-area-bonus {
+            @include center;
+            user-select: none;
+            cursor: pointer;
         }
     }
     .play-area-row:nth-child(2n) {
@@ -167,9 +209,17 @@ html, body {
     color: $highlight-color;
     font-size: $large;
 
+    .roll-btn-large-area {
+        grid-column: 1 / 3;
+    }
+
     div {
         @include center;
         user-select: none;
         cursor: pointer;
+    }
+    .play-btn-area.locked, .roll-btn-area.locked {
+        opacity: 0.5;
+        pointer-events: none;
     }
 }
