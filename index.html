@@ -41,8 +41,8 @@
                 <div class="point-area" v-bind:class="{ hide: turn }">{{ one }}</div>
                 <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
                 <div class="icon-area">3X</div>
-                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
-                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: !turn }">{{ pair3 }}</div>
+                <div class="point-area" v-bind:class="{ hide: turn }">{{ pair3 }}</div>
                 <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
             </div>
             <div class="play-area-row">
@@ -51,25 +51,25 @@
                 <div class="point-area" v-bind:class="{ hide: turn }">{{ two }}</div>
                 <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
                 <div class="icon-area">4X</div>
-                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
-                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: !turn }">{{ pair4 }}</div>
+                <div class="point-area" v-bind:class="{ hide: turn }">{{ pair4 }}</div>
                 <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
             </div>
             <div class="play-area-row">
                 <div class="icon-area">3</div>
-                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
-                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: !turn }">{{ three }}</div>
+                <div class="point-area" v-bind:class="{ hide: turn }">{{ three }}</div>
                 <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
                 <div class="icon-area">FH</div>
-                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
-                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: !turn }">{{ fullHouse }}</div>
+                <div class="point-area" v-bind:class="{ hide: turn }">{{ fullHouse }}</div>
                 <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
             </div>
 
             <div class="play-area-row">
                 <div class="icon-area">4</div>
-                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
-                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: !turn }">{{ four }}</div>
+                <div class="point-area" v-bind:class="{ hide: turn }">{{ four }}</div>
                 <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
                 <div class="icon-area">smll</div>
                 <div class="point-area" v-bind:class="{ hide: !turn }"></div>
@@ -78,8 +78,8 @@
             </div>
             <div class="play-area-row">
                 <div class="icon-area">5</div>
-                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
-                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: !turn }">{{ five }}</div>
+                <div class="point-area" v-bind:class="{ hide: turn }">{{ five }}</div>
                 <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
                 <div class="icon-area">lrg</div>
                 <div class="point-area" v-bind:class="{ hide: !turn }"></div>
@@ -88,8 +88,8 @@
             </div>
             <div class="play-area-row">
                 <div class="icon-area">6</div>
-                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
-                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: !turn }">{{ six }}</div>
+                <div class="point-area" v-bind:class="{ hide: turn }">{{ six }}</div>
                 <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
                 <div class="icon-area">yhtz</div>
                 <div class="point-area" v-bind:class="{ hide: !turn }"></div>
