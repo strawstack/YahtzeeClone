@@ -1,0 +1,175 @@
+/* Colors */
+$grey-blue: #8693AB;
+$pale-aqua: #BDD4E7;
+$honeydew: #F1F7EE;
+$pale-silver: #CBB3BF;
+$light-pink: #CC90AE;
+$dust-storm: #DBC7BE;
+
+/* Development Scheme */
+$base: #eee;
+$dark-base: #ccc;
+$font-color: #777;
+$highlight-color: #222;
+$point-highlight-color: #bbb;
+
+/* Scheme one */
+/*
+$base: $pale-aqua;
+$dark-base: $grey-blue;
+$font-color: $honeydew;
+$highlight-color: $light-pink; */
+
+/* font-size */
+$small: 0.7rem;
+$medium: 1.2rem;
+$large: 2.5rem;
+
+/* Size */
+$cell-size: 60px;
+
+/* Computed size */
+$content-width: 6 * $cell-size;
+
+/* Mixin */
+@mixin bottom-center {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+@mixin space-around {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html, body {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    background: $dark-base;
+    color: $font-color;
+    font-family: 'Varela Round', sans-serif;
+}
+.page-area {
+    display: grid;
+    grid-template-columns: 1fr minmax(0px, $content-width) 1fr;
+    height: 100%;
+}
+.content-area {
+    grid-column: 2 / 3;
+    background: $base;
+}
+
+/* head area */
+.head-area {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    .player-area {
+        display: grid;
+        grid-template-rows: 50px 30px;
+    }
+    .score-area {
+        font-size: $large;
+        @include center;
+    }
+    .player-name-area {
+        font-size: $medium;
+        @include center;
+    }
+}
+
+/* play area */
+.play-area {
+    display: grid;
+    grid-template-rows: minmax(30px, 1fr) repeat(7, $cell-size) minmax(30px, 1fr);
+
+    .play-area-info {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(6, $cell-size);
+        font-size: $small;
+
+        div {
+            @include bottom-center;
+        }
+    }
+    .play-area-row {
+        position: relative;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(6, $cell-size);
+        font-size: $medium;
+
+        .icon-area {
+            @include center;
+            border: 1px solid $dark-base;
+            margin: 2px;
+        }
+        .point-area {
+            @include center;
+            position: relative;
+            z-index: 1;
+
+            &.hide {
+                opacity: 0;
+            }
+        }
+    }
+    .play-area-row:nth-child(2n) {
+        background: darken($base, 5);
+    }
+    .light-area {
+        $margin: 4px;
+        position: absolute;
+        height: $cell-size - 2 * $margin;
+        width: $cell-size - 2 * $margin;
+        background: $point-highlight-color;
+        opacity: 0.5;
+        border-radius: 4px;
+        margin: $margin;
+        transition: left 0.2s;
+
+        &.left {
+            left: $cell-size;
+        }
+        &.left.p2 {
+            left: 2 * $cell-size;
+        }
+        &.right {
+            left: 4 * $cell-size;
+        }
+        &.right.p2 {
+            left: 5 * $cell-size;
+        }
+    }
+}
+
+/* dice area */
+.dice-area {
+    display: grid;
+    grid-template-rows: repeat(2, 70px);
+
+    .dice-view-area {
+        @include space-around;
+    }
+}
+.roll-area {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    color: $highlight-color;
+    font-size: $large;
+
+    div {
+        @include center;
+        user-select: none;
+        cursor: pointer;
+    }
+}

@@ -1,11 +1,17 @@
 # Yahtzee Clone
 
-Set-up a basic HTML / JS / CSS site quickly.
+A clone of an iOS version of Yahtzee
 
-# Steps
+# TODO
 
-1. `Fork` this repo.
-2. Open `settings` for the fork.
-3. Choose `settings`.
-4. Select `Master branch` as the source.
-5. Your repo will be hosted at the given URL.
+- [later] Define a second CSS file that contains small height screen values
+
+- [ ] Populate `play-area` with placeholder content
+
+- [ ] Develop a representative VueJS state object
+- [ ] Connect Roll button to the dice display
+- [ ] Implement 3 rolls per player
+    - [ ] Implement turn switching
+    - [ ] Implement two simple calculated score values (full-house, and number of ones)
+    - [ ] Allow player to select score cell during their turn
+    - [ ] Connect play button

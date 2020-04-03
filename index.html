@@ -3,34 +3,119 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <script src="script.js"></script>
     <!-- Font Awesome: <script src="https://kit.fontawesome.com/0033d354dd.js" crossorigin="anonymous"></script> -->
     <!-- D3: <script src="https://d3js.org/d3.v5.js"></script> -->
     <!-- Redux: https://unpkg.com/browse/redux@4.0.5/dist/ -->
-    <!-- Vue Dev: <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- Vue: <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
 </head>
 <body>
-<div class="page-area">
+<div class="page-area" id="app">
     <div class="content-area">
         <div class="head-area">
             <div class="player-area">
-                <div class="score-area">345</div>
+                <div class="score-area">0</div>
                 <div class="player-name-area">Diana</div>
             </div>
             <div class="player-area">
-                <div class="score-area">345</div>
+                <div class="score-area">0</div>
                 <div class="player-name-area">Richard</div>
             </div>
         </div>
         <div class="play-area">
-            <!-- Populate with VueJS -->
+            <!-- Populate with VueJS? -->
+            <div class="play-area-info">
+                <div></div>
+                <div>Diana</div>
+                <div>Richard</div>
+                <div></div>
+                <div>Diana</div>
+                <div>Richard</div>
+            </div>
+
+            <div class="play-area-row">
+                <div class="icon-area">1</div>
+                <div class="point-area" v-bind:class="{ hide: !turn }">{{ one }}</div>
+                <div class="point-area" v-bind:class="{ hide: turn }">{{ one }}</div>
+                <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="icon-area">3X</div>
+                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
+            </div>
+            <div class="play-area-row">
+                <div class="icon-area">2</div>
+                <div class="point-area" v-bind:class="{ hide: !turn }">{{ two }}</div>
+                <div class="point-area" v-bind:class="{ hide: turn }">{{ two }}</div>
+                <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="icon-area">4X</div>
+                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
+            </div>
+            <div class="play-area-row">
+                <div class="icon-area">3</div>
+                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="icon-area">FH</div>
+                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
+            </div>
+
+            <div class="play-area-row">
+                <div class="icon-area">4</div>
+                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="icon-area">smll</div>
+                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
+            </div>
+            <div class="play-area-row">
+                <div class="icon-area">5</div>
+                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="icon-area">lrg</div>
+                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
+            </div>
+            <div class="play-area-row">
+                <div class="icon-area">6</div>
+                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="icon-area">yhtz</div>
+                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
+            </div>
+
+            <div class="play-area-row">
+                <div class="icon-area">bns</div>
+                <div class="point-area">0/63</div>
+                <div class="point-area">0/63</div>
+                <div class="icon-area">?</div>
+                <div class="point-area" v-bind:class="{ hide: !turn }"></div>
+                <div class="point-area" v-bind:class="{ hide: turn }"></div>
+                <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
+            </div>
         </div>
         <div class="dice-area">
-            <div class="dice-view-area">1 2 3 4 5 6</div>
+            <div class="dice-view-area">
+                <div v-for="d in dice">
+                    {{ d }}
+                </div>
+            </div>
             <div class="roll-area">
-                <div class="roll-btn-area">roll</div>
-                <div class="play-btn-area">play</div>
+                <div class="roll-btn-area" v-on:click="rollDice">ROLL</div>
+                <div class="play-btn-area" v-on:click="flipTurn">PLAY</div>
             </div>
         </div>
     </div>
