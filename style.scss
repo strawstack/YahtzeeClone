@@ -55,6 +55,7 @@ html, body {
     background: $dark-base;
     color: $font-color;
     font-family: 'Varela Round', sans-serif;
+    user-select: none;
 }
 .page-area {
     display: grid;
@@ -154,7 +155,10 @@ html, body {
                 margin: 4px;
             }
 
-            &.select, &.used {
+            &.select {
+                color: yellow;
+            }
+            &.used {
                 color: green;
             }
         }
@@ -200,6 +204,22 @@ html, body {
 
     .dice-view-area {
         @include space-around;
+
+        .dice {
+            @include center;
+            height: $cell-size;
+            width: $cell-size;
+            border: 1px solid $dark-base;
+
+            &.active:hover {
+                cursor: pointer;
+                border: 2px solid yellow;
+            }
+
+            &.lock {
+                background: darken($base, 5);
+            }
+        }
     }
 }
 .roll-area {

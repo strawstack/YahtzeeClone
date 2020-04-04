@@ -5,7 +5,7 @@ function main() {
     let calculate = (dice, value) => {
         let score = 0;
         for (let d of dice) {
-            if (d == value) {
+            if (d.value == value) {
                 score += value;
             }
         }
@@ -15,8 +15,8 @@ function main() {
     let fz = dice => {
         let f = {};
         for (let d of dice) {
-            if (!(d in f)) f[d] = 0;
-            f[d] += 1;
+            if (!(d.value in f)) f[d.value] = 0;
+            f[d.value] += 1;
         }
         return f;
     };
@@ -24,7 +24,7 @@ function main() {
     let sum = dice => {
         let sum = 0;
         for (let d of dice) {
-            sum += d;
+            sum += d.value;
         }
         return sum;
     };
@@ -65,7 +65,11 @@ function main() {
         el: '#app',
         data: {
             turn: true,
-            dice: [0, 0, 0, 0, 0],
+            dice: [
+                {index: 0, value: 0}, {index: 1, value: 0}, {index: 2, value: 0},
+                {index: 3, value: 0}, {index: 4, value: 0}
+            ],
+            frozen: [false, false, false, false, false],
             rollsLeft: 3,
             p1s: p1Score,
             p2s: p2Score,
@@ -88,12 +92,23 @@ function main() {
                 this.tempSelect = '';
                 this.turn = !this.turn;
                 this.rollsLeft = 3;
-                this.dice = [0, 0, 0, 0, 0];
+                this.dice = [
+                    {index: 0, value: 0}, {index: 1, value: 0}, {index: 2, value: 0},
+                    {index: 3, value: 0}, {index: 4, value: 0}
+                ];
+                this.frozen = [false, false, false, false, false];
             },
             rollDice: function (event) {
                 let newList = [];
                 for (let i = 0; i < this.dice.length; i++) {
-                    newList.push(Math.floor(Math.random() * 6) + 1);
+                    if (this.frozen[i]) {
+                        newList.push({index: i, value: this.dice[i].value});
+                    } else {
+                        newList.push({
+                            index: i,
+                            value: Math.floor(Math.random() * 6) + 1
+                        });
+                    }
                 }
                 this.rollsLeft -= 1;
                 this.dice = newList;
@@ -101,6 +116,19 @@ function main() {
             select: function (term) {
                 if (this.rollsLeft < 3) {
                     this.tempSelect = term;
+                }
+            },
+            freeze: function (index) {
+                if (this.rollsLeft < 3) {
+                    let newList = [];
+                    for (let i = 0; i < this.frozen.length; i++) {
+                        if (index == i) {
+                            newList.push(!this.frozen[i]);
+                        } else {
+                            newList.push(this.frozen[i]);
+                        }
+                    }
+                    this.frozen = newList;
                 }
             }
         },
@@ -156,43 +184,44 @@ function main() {
                 }
             },
             small: function () {
-                let sortDice = this.dice.slice().sort((a,b) => a - b);
+                let f = fz(this.dice);
+                let setA = [1,2,3,4];
+                let setB = [2,3,4,5];
+                let setC = [3,4,5,6];
+
                 let a = true;
-                for (let i = 0; i < 3; i++) {
-                    if (sortDice[i] + 1 !== sortDice[i + 1]) {
-                        a = false;
-                        break;
-                    }
+                for (let value of setA) {
+                    if (!(value in f)) a = false;
                 }
                 let b = true;
-                for (let i = 1; i < 4; i++) {
-                    if (sortDice[i] + 1 !== sortDice[i + 1]) {
-                        b = false;
-                        break;
-                    }
+                for (let value of setB) {
+                    if (!(value in f)) b = false;
                 }
-                if (a || b) {
+                let c = true;
+                for (let value of setC) {
+                    if (!(value in f)) c = false;
+                }
+
+                if (a || b || c) {
                     return 30;
                 } else {
                     return 0;
                 }
             },
             large: function () {
-                let sortDice = this.dice.slice().sort((a,b) => a - b);
+                let f = fz(this.dice);
+                let setA = [1,2,3,4,5];
+                let setB = [2,3,4,5,6];
+
                 let a = true;
-                for (let i = 0; i < 4; i++) {
-                    if (sortDice[i] + 1 != sortDice[i + 1]) {
-                        a = false;
-                        break;
-                    }
+                for (let value of setA) {
+                    if (!(value in f)) a = false;
                 }
                 let b = true;
-                for (let i = 1; i < 5; i++) {
-                    if (sortDice[i] + 1 != sortDice[i + 1]) {
-                        b = false;
-                        break;
-                    }
+                for (let value of setB) {
+                    if (!(value in f)) b = false;
                 }
+
                 if (a || b) {
                     return 40;
                 } else {

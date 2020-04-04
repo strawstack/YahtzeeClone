@@ -17,6 +17,7 @@ html, body {
   background: #ccc;
   color: #777;
   font-family: "Varela Round", sans-serif;
+  user-select: none;
 }
 
 .page-area {
@@ -121,7 +122,10 @@ html, body {
   border-radius: 4px;
   margin: 4px;
 }
-.play-area .play-area-row .point-area.select, .play-area .play-area-row .point-area.used {
+.play-area .play-area-row .point-area.select {
+  color: yellow;
+}
+.play-area .play-area-row .point-area.used {
   color: green;
 }
 .play-area .play-area-row .point-area-bonus {
@@ -166,6 +170,21 @@ html, body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+.dice-area .dice-view-area .dice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  border: 1px solid #ccc;
+}
+.dice-area .dice-view-area .dice.active:hover {
+  cursor: pointer;
+  border: 2px solid yellow;
+}
+.dice-area .dice-view-area .dice.lock {
+  background: #e1e1e1;
 }
 
 .roll-area {

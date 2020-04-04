@@ -266,14 +266,14 @@
                 <div class="icon-area">?</div>
 
                 <div class="point-area" v-bind:class="{used: turn}"
-                    v-if="p1s.q.selected">{{ diceTotal }}</div>
+                    v-if="p1s.q.selected">{{ p1s.q.score }}</div>
                 <div class="point-area"
                     v-else
                     v-bind:class="{ hide: !turn, select: tempSelect == 'q', active: rollsLeft < 3 }"
                     v-on:click="select('q')">{{ diceTotal }}</div>
 
                 <div class="point-area" v-bind:class="{used: !turn}"
-                    v-if="p2s.q.selected">{{ diceTotal }}</div>
+                    v-if="p2s.q.selected">{{ p2s.q.score }}</div>
                 <div class="point-area"
                     v-else
                     v-bind:class="{ hide: turn, select: tempSelect == 'q', active: rollsLeft < 3 }"
@@ -284,9 +284,10 @@
         </div>
         <div class="dice-area">
             <div class="dice-view-area">
-                <div v-for="d in dice">
-                    {{ d }}
-                </div>
+                <div v-for="d in dice"
+                    class="dice"
+                    v-bind:class="{ active: rollsLeft < 3, lock: frozen[d.index] }"
+                    v-on:click="freeze(d.index)">{{ d.value }}</div>
             </div>
             <div v-if="rollsLeft == 3" class="roll-area">
                 <div class="roll-btn-large-area" v-on:click="rollDice">ROLL</div>
