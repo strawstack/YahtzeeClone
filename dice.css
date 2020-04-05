@@ -1,0 +1,168 @@
+.dice {
+    pointer-events: none;
+}
+.dice>circle {
+    r: 5;
+    opacity: 0;
+    transition: cx 0.2s linear, cy 0.2s linear, opacity 0.2s linear;
+}
+
+/* One */
+.dice.one>circle, .dice.two>circle, .dice.three>circle,
+.dice.four>circle, .dice.five>circle, .dice.six>circle {
+    opacity: 1;
+}
+.dice.one>circle:nth-child(1) {
+    cx: 30;
+    cy: 30;
+}
+.dice.one>circle:nth-child(2) {
+    cx: 30;
+    cy: 30;
+}
+.dice.one>circle:nth-child(3) {
+    cx: 30;
+    cy: 30;
+}
+.dice.one>circle:nth-child(4) {
+    cx: 30;
+    cy: 30;
+}
+.dice.one>circle:nth-child(5) {
+    cx: 30;
+    cy: 30;
+}
+.dice.one>circle:nth-child(6) {
+    cx: 30;
+    cy: 30;
+}
+
+/* Two */
+.dice.two>circle:nth-child(1) {
+    cx: 20;
+    cy: 40;
+}
+.dice.two>circle:nth-child(2) {
+    cx: 20;
+    cy: 40;
+}
+.dice.two>circle:nth-child(3) {
+    cx: 20;
+    cy: 40;
+}
+.dice.two>circle:nth-child(4) {
+    cx: 40;
+    cy: 20;
+}
+.dice.two>circle:nth-child(5) {
+    cx: 40;
+    cy: 20;
+}
+.dice.two>circle:nth-child(6) {
+    cx: 40;
+    cy: 20;
+}
+
+/* Three */
+.dice.three>circle:nth-child(1) {
+    cx: 20;
+    cy: 40;
+}
+.dice.three>circle:nth-child(2) {
+    cx: 20;
+    cy: 40;
+}
+.dice.three>circle:nth-child(3) {
+    cx: 30;
+    cy: 30;
+}
+.dice.three>circle:nth-child(4) {
+    cx: 30;
+    cy: 30;
+}
+.dice.three>circle:nth-child(5) {
+    cx: 40;
+    cy: 20;
+}
+.dice.three>circle:nth-child(6) {
+    cx: 40;
+    cy: 20;
+}
+
+/* Four */
+.dice.four>circle:nth-child(1) {
+    cx: 20;
+    cy: 20;
+}
+.dice.four>circle:nth-child(2) {
+    cx: 20;
+    cy: 20;
+}
+.dice.four>circle:nth-child(3) {
+    cx: 40;
+    cy: 40;
+}
+.dice.four>circle:nth-child(4) {
+    cx: 40;
+    cy: 40;
+}
+.dice.four>circle:nth-child(5) {
+    cx: 20;
+    cy: 40;
+}
+.dice.four>circle:nth-child(6) {
+    cx: 40;
+    cy: 20;
+}
+
+/* Five */
+.dice.five>circle:nth-child(1) {
+    cx: 20;
+    cy: 20;
+}
+.dice.five>circle:nth-child(2) {
+    cx: 30;
+    cy: 30;
+}
+.dice.five>circle:nth-child(3) {
+    cx: 30;
+    cy: 30;
+}
+.dice.five>circle:nth-child(4) {
+    cx: 40;
+    cy: 40;
+}
+.dice.five>circle:nth-child(5) {
+    cx: 20;
+    cy: 40;
+}
+.dice.five>circle:nth-child(6) {
+    cx: 40;
+    cy: 20;
+}
+
+/* Six */
+.dice.six>circle:nth-child(1) {
+    cx: 20;
+    cy: 18; /* 20 - 2 */
+}
+.dice.six>circle:nth-child(2) {
+    cx: 20;
+    cy: 30;
+}
+.dice.six>circle:nth-child(3) {
+    cx: 40;
+    cy: 30;
+}
+.dice.six>circle:nth-child(4) {
+    cx: 40;
+    cy: 42; /* 40 + 2 */
+}
+.dice.six>circle:nth-child(5) {
+    cx: 20;
+    cy: 42; /* 40 + 2 */
+}
+.dice.six>circle:nth-child(6) {
+    cx: 40;
+    cy: 18; /* 20 - 2 */
+}

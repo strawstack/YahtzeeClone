@@ -160,6 +160,9 @@ html, body {
 .play-area .light-area.right.p2 {
   left: 300px;
 }
+.play-area .light-area.hide {
+  opacity: 0;
+}
 
 /* dice area */
 .dice-area {
@@ -171,7 +174,7 @@ html, body {
   justify-content: space-around;
   align-items: center;
 }
-.dice-area .dice-view-area .dice {
+.dice-area .dice-view-area .dice-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -179,11 +182,11 @@ html, body {
   width: 60px;
   border: 1px solid #ccc;
 }
-.dice-area .dice-view-area .dice.active:hover {
+.dice-area .dice-view-area .dice-container.active:hover {
   cursor: pointer;
   border: 2px solid yellow;
 }
-.dice-area .dice-view-area .dice.lock {
+.dice-area .dice-view-area .dice-container.lock {
   background: #e1e1e1;
 }
 

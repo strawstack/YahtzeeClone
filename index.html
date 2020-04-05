@@ -3,6 +3,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="dice.css">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <script src="script.js"></script>
     <!-- Font Awesome: <script src="https://kit.fontawesome.com/0033d354dd.js" crossorigin="anonymous"></script> -->
@@ -58,7 +59,7 @@
                     v-bind:class="{ hide: turn, select: tempSelect == 'one', active: rollsLeft < 3 }"
                     v-on:click="select('one')">{{ one }}</div>
 
-                <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="left light-area" v-bind:class="{ p2: !turn, hide: turn && p1s.one.selected || !turn && p2s.one.selected }"></div>
                 <div class="icon-area">3X</div>
 
                 <div class="point-area" v-bind:class="{used: turn}"
@@ -75,7 +76,7 @@
                     v-bind:class="{ hide: turn, select: tempSelect == 'pair3', active: rollsLeft < 3 }"
                     v-on:click="select('pair3')">{{ pair3 }}</div>
 
-                <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="right light-area" v-bind:class="{ p2: !turn, hide: turn && p1s.pair3.selected || !turn && p2s.pair3.selected }"></div>
             </div>
             <div class="play-area-row">
                 <div class="icon-area">2</div>
@@ -94,7 +95,7 @@
                     v-bind:class="{ hide: turn, select: tempSelect == 'two', active: rollsLeft < 3 }"
                     v-on:click="select('two')">{{ two }}</div>
 
-                <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="left light-area" v-bind:class="{ p2: !turn, hide: turn && p1s.two.selected || !turn && p2s.two.selected }"></div>
                 <div class="icon-area">4X</div>
 
                 <div class="point-area" v-bind:class="{used: turn}"
@@ -111,7 +112,7 @@
                     v-bind:class="{ hide: turn, select: tempSelect == 'pair4', active: rollsLeft < 3 }"
                     v-on:click="select('pair4')">{{ pair4 }}</div>
 
-                <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="right light-area" v-bind:class="{ p2: !turn, hide: turn && p1s.pair4.selected || !turn && p2s.pair4.selected }"></div>
             </div>
             <div class="play-area-row">
                 <div class="icon-area">3</div>
@@ -130,7 +131,7 @@
                     v-bind:class="{ hide: turn, select: tempSelect == 'three', active: rollsLeft < 3 }"
                     v-on:click="select('three')">{{ three }}</div>
 
-                <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="left light-area" v-bind:class="{ p2: !turn, hide: turn && p1s.three.selected || !turn && p2s.three.selected }"></div>
                 <div class="icon-area">FH</div>
 
                 <div class="point-area" v-bind:class="{used: turn}"
@@ -147,7 +148,7 @@
                     v-bind:class="{ hide: turn, select: tempSelect == 'fh', active: rollsLeft < 3 }"
                     v-on:click="select('fh')">{{ fullHouse }}</div>
 
-                <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="right light-area" v-bind:class="{ p2: !turn, hide: turn && p1s.fh.selected || !turn && p2s.fh.selected }"></div>
             </div>
 
             <div class="play-area-row">
@@ -167,7 +168,7 @@
                     v-bind:class="{ hide: turn, select: tempSelect == 'four', active: rollsLeft < 3 }"
                     v-on:click="select('four')">{{ four }}</div>
 
-                <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="left light-area" v-bind:class="{ p2: !turn, hide: turn && p1s.four.selected || !turn && p2s.four.selected }"></div>
                 <div class="icon-area">smll</div>
 
                 <div class="point-area" v-bind:class="{used: turn}"
@@ -184,7 +185,7 @@
                     v-bind:class="{ hide: turn, select: tempSelect == 'smll', active: rollsLeft < 3 }"
                     v-on:click="select('smll')">{{ small }}</div>
 
-                <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="right light-area" v-bind:class="{ p2: !turn, hide: turn && p1s.smll.selected || !turn && p2s.smll.selected }"></div>
             </div>
             <div class="play-area-row">
                 <div class="icon-area">5</div>
@@ -203,7 +204,7 @@
                     v-bind:class="{ hide: turn, select: tempSelect == 'five', active: rollsLeft < 3 }"
                     v-on:click="select('five')">{{ five }}</div>
 
-                <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="left light-area" v-bind:class="{ p2: !turn, hide: turn && p1s.five.selected || !turn && p2s.five.selected }"></div>
                 <div class="icon-area">lrg</div>
 
                 <div class="point-area" v-bind:class="{used: turn}"
@@ -220,7 +221,7 @@
                     v-bind:class="{ hide: turn, select: tempSelect == 'lrg', active: rollsLeft < 3 }"
                     v-on:click="select('lrg')">{{ large }}</div>
 
-                <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="right light-area" v-bind:class="{ p2: !turn, hide: turn && p1s.lrg.selected || !turn && p2s.lrg.selected }"></div>
             </div>
             <div class="play-area-row">
                 <div class="icon-area">6</div>
@@ -239,7 +240,7 @@
                     v-bind:class="{ hide: turn, select: tempSelect == 'six', active: rollsLeft < 3 }"
                     v-on:click="select('six')">{{ six }}</div>
 
-                <div class="left light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="left light-area" v-bind:class="{ p2: !turn, hide: turn && p1s.six.selected || !turn && p2s.six.selected }"></div>
                 <div class="icon-area">yhtz</div>
 
                 <div class="point-area" v-bind:class="{used: turn}"
@@ -256,7 +257,7 @@
                     v-bind:class="{ hide: turn, select: tempSelect == 'yhtz', active: rollsLeft < 3 }"
                     v-on:click="select('yhtz')">{{ yahtzee }}</div>
 
-                <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="right light-area" v-bind:class="{ p2: !turn, hide: turn && p1s.yhtz.selected || !turn && p2s.yhtz.selected }"></div>
             </div>
 
             <div class="play-area-row">
@@ -279,15 +280,28 @@
                     v-bind:class="{ hide: turn, select: tempSelect == 'q', active: rollsLeft < 3 }"
                     v-on:click="select('q')">{{ diceTotal }}</div>
 
-                <div class="right light-area" v-bind:class="{ p2: !turn }"></div>
+                <div class="right light-area" v-bind:class="{ p2: !turn, hide: turn && p1s.q.selected || !turn && p2s.q.selected }"></div>
             </div>
         </div>
         <div class="dice-area">
             <div class="dice-view-area">
-                <div v-for="d in dice"
-                    class="dice"
-                    v-bind:class="{ active: rollsLeft < 3, lock: frozen[d.index] }"
-                    v-on:click="freeze(d.index)">{{ d.value }}</div>
+                <template v-for="d in dice">
+                    <div class="dice-container"
+                        v-bind:class="{ active: rollsLeft < 3, lock: frozen[d.index] }"
+                        v-on:click="freeze(d.index)">
+                        <svg class="dice"
+                            v-bind:class="{ one: d.value == 1, two: d.value == 2, three: d.value == 3, four: d.value == 4, five: d.value == 5, six: d.value == 6}"
+                            width="60" height="60" viewbox="0 0 60 60"
+                            preserveAspectRatio="xMidYMid meet">
+                            <circle cx="30" cy="30" />
+                            <circle cx="30" cy="30" />
+                            <circle cx="30" cy="30" />
+                            <circle cx="30" cy="30" />
+                            <circle cx="30" cy="30" />
+                            <circle cx="30" cy="30" />
+                        </svg>
+                    </div>
+                </template>
             </div>
             <div v-if="rollsLeft == 3" class="roll-area">
                 <div class="roll-btn-large-area" v-on:click="rollDice">ROLL</div>

@@ -194,6 +194,9 @@ html, body {
         &.right.p2 {
             left: 5 * $cell-size;
         }
+        &.hide {
+            opacity: 0;
+        }
     }
 }
 
@@ -205,7 +208,7 @@ html, body {
     .dice-view-area {
         @include space-around;
 
-        .dice {
+        .dice-container {
             @include center;
             height: $cell-size;
             width: $cell-size;
