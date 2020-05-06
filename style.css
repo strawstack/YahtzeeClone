@@ -21,14 +21,93 @@ html, body {
 }
 
 .page-area {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr minmax(0px, 360px) 1fr;
   height: 100%;
 }
 
 .content-area {
+  position: relative;
   grid-column: 2/3;
   background: #eee;
+}
+
+/* Win Dialogue */
+.win-dialogue {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 200px;
+  background: rgba(238, 238, 238, 0.8);
+  height: 150px;
+  border: 2px solid #bbb;
+  z-index: 10;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+.win-dialogue.show {
+  opacity: 1;
+  pointer-events: all;
+}
+.win-dialogue.close {
+  opacity: 0;
+  pointer-events: none;
+}
+.win-dialogue .text-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+}
+.win-dialogue .button-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.win-dialogue .button-area .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 80px;
+  border: 1px solid #bbb;
+}
+.win-dialogue .button-area .btn:hover {
+  background: yellow;
+  cursor: pointer;
+}
+.win-dialogue .button-area .close-btn-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.win-dialogue .button-area .restart-btn-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+/* Restart Global */
+.restart-global {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 30px;
+  width: 80px;
+  background: #eee;
+}
+
+.restart-global:hover {
+  background: yellow;
+  cursor: pointer;
 }
 
 /* head area */
@@ -185,6 +264,7 @@ html, body {
 .dice-area .dice-view-area .dice-container.active:hover {
   cursor: pointer;
   border: 2px solid yellow;
+  box-sizing: border-box;
 }
 .dice-area .dice-view-area .dice-container.lock {
   background: #e1e1e1;

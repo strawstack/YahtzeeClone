@@ -14,7 +14,21 @@
 </head>
 <body>
 <div class="page-area" id="app">
+    <div class="restart-global">
+        <div class="restart-btn" v-on:click="restartGame()">Restart</div>
+    </div>
     <div class="content-area">
+        <div class="win-dialogue" v-bind:class="{'show': gameOver, 'close': closeWin}">
+            <div class="text-area">{{ winText }}</div>
+            <div class="button-area">
+                <div class="close-btn-area">
+                    <div class="btn" v-on:click="closeWinScreen()">Close</div>
+                </div>
+                <div class="restart-btn-area">
+                    <div class="btn" v-on:click="restartGame()">Restart</div>
+                </div>
+            </div>
+        </div>
         <div class="head-area">
             <div class="player-area">
                 <div class="score-area">{{ p1TotalScore }}</div>
@@ -261,7 +275,7 @@
             </div>
 
             <div class="play-area-row">
-                <div class="icon-area">bns</div>
+                <div class="icon-area">bns<br>+35</div>
                 <div class="point-area-bonus">{{ p1Bonus }}/63</div>
                 <div class="point-area-bonus">{{ p2Bonus }}/63</div>
                 <div class="icon-area">?</div>

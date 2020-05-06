@@ -73,7 +73,8 @@ function main() {
             rollsLeft: 3,
             p1s: p1Score,
             p2s: p2Score,
-            tempSelect: ''
+            tempSelect: '',
+            closeWin: false
         },
         methods: {
             flipTurn: function (event) {
@@ -130,6 +131,13 @@ function main() {
                     }
                     this.frozen = newList;
                 }
+            },
+            closeWinScreen: function() {
+                this.closeWin = true;
+            },
+            restartGame: function() {
+                // Just refresh the page
+                location.reload();
             }
         },
         computed: {
@@ -270,7 +278,11 @@ function main() {
                         total += obj.score;
                     }
                 }
-                return total;
+                let bonus = 0;
+                if (this.p1Bonus == 63) {
+                    bonus = 35;
+                }
+                return total + bonus;
             },
             p2TotalScore: function () {
                 let total = 0;
@@ -280,7 +292,28 @@ function main() {
                         total += obj.score;
                     }
                 }
-                return total;
+                let bonus = 0;
+                if (this.p2Bonus == 63) {
+                    bonus = 35;
+                }
+                return total + bonus;
+            },
+            gameOver: function() {
+                for (let term in this.p2s) {
+                    if (!this.p2s[term].selected) {
+                        return false
+                    }
+                }
+                return true
+            },
+            winText: function() {
+                if (this.p1TotalScore == this.p2TotalScore) {
+                    return "It's a tie!"
+                } else if (this.p1TotalScore > this.p2TotalScore) {
+                    return "Player One wins!"
+                } else {
+                    return "Player Two wins!"
+                }
             }
         }
     });

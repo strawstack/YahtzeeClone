@@ -58,13 +58,81 @@ html, body {
     user-select: none;
 }
 .page-area {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr minmax(0px, $content-width) 1fr;
     height: 100%;
 }
 .content-area {
+    position: relative;
     grid-column: 2 / 3;
     background: $base;
+}
+
+/* Win Dialogue */
+.win-dialogue {
+    &.show {
+        opacity: 1;
+        pointer-events: all;
+    }
+    &.close {
+        opacity: 0;
+        pointer-events: none;
+    }
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 200px;
+    background: rgba(red($base), green($base), blue($base), 0.8);
+    height: 150px;
+    border: 2px solid $point-highlight-color;
+    z-index: 10;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    .text-area {
+        @include center;
+        font-size: $large;
+    }
+    .button-area {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        .btn {
+            @include center;
+            height: 30px;
+            width: 80px;
+            border: 1px solid $point-highlight-color;
+        }
+        .btn:hover {
+            background: yellow;
+            cursor: pointer;
+        }
+        .close-btn-area {
+            @include center;
+            font-size: $medium;
+        }
+        .restart-btn-area {
+            @include center;
+            font-size: $medium;
+        }
+    }
+}
+
+/* Restart Global */
+.restart-global {
+    @include center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 30px;
+    width: 80px;
+    background: $base;
+}
+.restart-global:hover {
+    background: yellow;
+    cursor: pointer;
 }
 
 /* head area */
@@ -217,6 +285,7 @@ html, body {
             &.active:hover {
                 cursor: pointer;
                 border: 2px solid yellow;
+                box-sizing: border-box;
             }
 
             &.lock {
