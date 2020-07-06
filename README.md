@@ -4,8 +4,8 @@ A clone of a Yahtzee game written with VueJS
 
 # Live Demo
 
-[View Live Demo](https://regularmemory.blog/YahtzeeClone/)
+[View Live Demo](https://strawstack.github.io/YahtzeeClone/)
 
 # Screenshot
 
-[![](./screenshot.png)](https://regularmemory.blog/YahtzeeClone/)
+[![](./screenshot.png)](https://strawstack.github.io/YahtzeeClone/)
